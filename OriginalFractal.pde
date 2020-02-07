@@ -11,6 +11,13 @@ public void setup(){
 
 public void draw(){
 	background(0);
+	radCounter = 0;
+	fibfrac(250, 250, controlN, 50);
+	radCounter = 1;
+	fibfrac(250, 250, controlN, 50);
+	radCounter = 2;
+	fibfrac(250, 250, controlN, 50);
+	radCounter = 3;
 	fibfrac(250, 250, controlN, 50);
 }
 
@@ -98,7 +105,7 @@ public int fibY(int y, int n, int siz){
 
 public void keyPressed(){
 	if(keyCode == UP){
-		if(controlN < 13)
+		if(controlN < 7)
 		controlN ++;
 	}
 	if(keyCode == DOWN){
