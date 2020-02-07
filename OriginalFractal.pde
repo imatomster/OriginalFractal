@@ -9,14 +9,7 @@ public void setup(){
 }
 
 public void draw(){
-	if(tempRX < 0){
-		tempRX = 3;
-	}
-	if(tempRY < 0){
-		tempRY = 3;
-	}
-	
-	fibfrac(250, 250, 3, 50);
+	fibfrac(250, 250, 2, 50);
 }
 
 
@@ -37,11 +30,11 @@ public void fibfrac(int x, int y, int n, int siz){
 	stroke(#D591D5);
 	if(n == 0){
 		fill(random(255),random(255),random(255));
-		arc(fibX(x, n, siz), fibY(y, n, siz), fib(n) * siz, fib(n) * siz, PI/2, PI);
+		arc(x, y, fib(n) * siz, fib(n) * siz, PI/2, PI);
 	}else if(n == 1){
 		fibfrac(x,y,n-1,siz);
 		fill(random(255),random(255),random(255));
-		arc(fibX(x, n, siz), fibY(y, n, siz), fib(n) * siz, fib(n) * siz, 0, PI/2);
+		arc(x, y, fib(n) * siz, fib(n) * siz, 0, PI/2);
 	}else {
 		fibfrac(x,y,n-1,siz);
 
@@ -49,26 +42,27 @@ public void fibfrac(int x, int y, int n, int siz){
 			fill(random(255),random(255),random(255));
 			tempRX = radCounter;
 			tempRY = radCounter;
+			radCounter++;
 			arc(fibX(x, n, siz), fibY(y, n, siz), fib(n) * siz, fib(n) * siz, 3*PI/2 , 2*PI);
 		}else if(radCounter == 1){
 			fill(random(255),random(255),random(255));
 			tempRX = radCounter;
 			tempRY = radCounter;
+			radCounter++;
 			arc(fibX(x, n, siz), fibY(y, n, siz), fib(n) * siz, fib(n) * siz, PI, 3*PI/2);
 		}else if(radCounter == 2){
 			fill(random(255),random(255),random(255));
 			tempRX = radCounter;
 			tempRY = radCounter;
+			radCounter++;
 			arc(fibX(x, n, siz), fibY(y, n, siz), fib(n) * siz, fib(n) * siz, PI/2, PI);
 		}else if(radCounter == 3){
 			fill(random(255),random(255),random(255));
 			tempRX = radCounter;
 			tempRY = radCounter;
-			arc(fibX(x, n, siz), fibY(y, n, siz), fib(n) * siz, fib(n) * siz, 0, PI/2);
 			radCounter = 0;
+			arc(fibX(x, n, siz), fibY(y, n, siz), fib(n) * siz, fib(n) * siz, 0, PI/2);
 		}
-
-		radCounter++;
 	}
 }
 
@@ -86,7 +80,7 @@ public int fibX(int x, int n, int siz){
 	if(n <= 1){
 		return x;
 	}else if(tempRX == 0){
-		tempRX--;
+		tempRX = 3;
 		return fibX(x,n-1,siz) - fib(n-2) * siz;
 	}else if(tempRX == 1){
 		tempRX--;
@@ -104,7 +98,7 @@ public int fibY(int y, int n, int siz){
 	if(n <= 1){
 		return y;
 	}else if(tempRY == 0){
-		tempRY--;
+		tempRY = 3;
 		return fibY(y,n-1,siz);
 	}else if(tempRX == 1){
 		tempRY--;
