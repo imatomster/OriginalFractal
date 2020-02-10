@@ -3,10 +3,12 @@ int tempRX = 0;
 int tempRY = 0;
 
 int controlN = 0;
+boolean cNBool = true;
 
 public void setup(){
 	size(500, 500);
 	background(0);
+	frameRate(15);
 }
 
 public void draw(){
@@ -19,6 +21,18 @@ public void draw(){
 	fibfrac(250, 250, controlN, 50);
 	radCounter = 3;
 	fibfrac(250, 250, controlN, 50);
+
+	if(cNBool == true){
+		controlN++;
+	}else if(cNBool == false){
+		controlN--;
+	}
+
+	if(controlN > 7){
+		cNBool = false;
+	}else if(controlN < 1){
+		cNBool = true;
+	}
 }
 
 public void fibfrac(int x, int y, int n, int siz){
@@ -100,17 +114,5 @@ public int fibY(int y, int n, int siz){
 	}else{
 		tempRY--;
 		return fibY(y,n-1,siz) - fib(n-2) * siz/2;
-	}
-}
-
-public void keyPressed(){
-	if(keyCode == UP){
-		if(controlN < 7)
-		controlN ++;
-	}
-	if(keyCode == DOWN){
-		if(controlN > 0){
-			controlN --;
-		}
 	}
 }
